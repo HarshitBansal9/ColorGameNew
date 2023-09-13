@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <link rel="stylesheet" href="./colorGame.css" />
+    <div class="initpage">
+        <h1 class="inittital">The Great Color Game</h1>
+        <h2 >Enter your name</h2>
+        <div><input id="nameInput" type="text" /></div>
+        <div>
+            <button disabled class="easy initbutton">E A S Y</button>
+        </div>
+        <p></p>
+        <div>
+            <button disabled class="medium initbutton">M E D I U M</button>
+        </div>
+        <p></p>
+        <div>
+            <button disabled class="hard initbutton">H A R D</button>
+        </div>
+
+    </div>
+
+    <!--  -->
+
+    <script>
+        const inputElement = document.getElementById("nameInput");
+        const buttons = document.getElementsByClassName("initbutton");
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("click", function () {
+                const difficulty = this.className.split(" ")[0];
+                window.location.href = `file:///C:/Users/harsh/Desktop/Frontend%20Masters/Color%20game/ColorGame.html?difficulty=${difficulty}&name=${inputElement.value}`;
+            });
+        }
+        inputElement.addEventListener("input", function () {
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = inputElement.value.trim().length == 0;
+            }
+        });
+    </script>
+    <script src="./colorGame.js"></script>
+</body>
+
+</html>
