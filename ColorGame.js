@@ -9,10 +9,9 @@ let answer;
 let answerColor;
 let params = (new URL(document.location)).searchParams;
 let difficulty = params.get("difficulty");
-console.log(difficulty)
 let cnt = 0;
 let score = 0;
-var f = "score.txt";
+var f = "score.txt"
 
 function submitScore(score) {
     var xhr = new XMLHttpRequest();
@@ -22,11 +21,9 @@ function submitScore(score) {
         score,
     }));
 }
+
 // 2. Append somewhere
 var body = document.getElementsByClassName("button-container")[0];
-if (difficulty == "easy") {
-
-}
 const buttonNames = [
     "one",
     "two",
@@ -74,9 +71,6 @@ for (let i = 0; i < height; i++) {
     }
     body.appendChild(row);
 }
-
-
-
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
@@ -98,7 +92,6 @@ document.querySelector(".NewColors").addEventListener("click", function () {
     if (cnt == 10) {
         window.location.replace("file:///C:/Users/harsh/Desktop/Frontend%20Masters/Color%20game/initialpage.html");
     }
-    console.log(cnt);
     document.querySelector(".result").innerText = "";
     enableButtons("");
     for (let i = 0; i <= width * height - 1; i++) {
@@ -119,10 +112,9 @@ document.querySelector(".NewColors").addEventListener("click", function () {
 
     }
     answer = document.querySelector(`.${buttonNames[getRndInteger(0, 5)]}`);
-    console.log(answer.backgroundColor)
+    console.log(answer);
     answerColor = window.getComputedStyle(answer).backgroundColor;
     paragraph.innerText = answerColor;
-    console.log(answerColor.toS)
 });
 document.querySelector('.button-container').addEventListener('click', function (event) {
     var userInput = event.target.style.backgroundColor;
@@ -138,6 +130,5 @@ document.querySelector('.button-container').addEventListener('click', function (
         document.querySelector(".result").innerText = "You are wrong";
         disableButtons("");
         document.querySelector(".choose-new-colors").innerText = "Choose new colors";
-        console.log(score);
     }
 });
